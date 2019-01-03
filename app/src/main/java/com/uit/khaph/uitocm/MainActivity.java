@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     String userName;
     String className;
     String pictureUrl;
+    String test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
