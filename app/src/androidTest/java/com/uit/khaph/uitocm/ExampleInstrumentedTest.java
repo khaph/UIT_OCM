@@ -1,4 +1,4 @@
-package com.uit.khaph.trackmywork;
+package com.uit.khaph.uitocm;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

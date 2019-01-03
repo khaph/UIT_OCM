@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/imvMeetingPicture"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/logo_uit"
+        app:layout_constraintHeight_percent=".20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent=".20" />
+
+    <TextView
+        android:id="@+id/tvMeetingName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:textColor="#001aff"
+        android:textFontWeight="bold"
+        android:text="Tên cuộc họp"
+        app:layout_constraintStart_toEndOf="@+id/imvMeetingPicture"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCreatorName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Người tạo"
+        android:textColor="#fc0000"
+        app:layout_constraintStart_toEndOf="@+id/imvMeetingPicture"
+        app:layout_constraintTop_toBottomOf="@+id/tvMeetingName" />
+
+    <TextView
+        android:id="@+id/tvInformation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="Thông tin cuộc họp"
+        app:layout_constraintStart_toEndOf="@+id/imvMeetingPicture"
+        app:layout_constraintTop_toBottomOf="@+id/tvMeetingName" />
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "280982305319",
+    "firebase_url": "https://uit-ocm.firebaseio.com",
+    "project_id": "uit-ocm",
+    "storage_bucket": "uit-ocm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:280982305319:android:ff3fc505e1296114",
+        "android_client_info": {
+          "package_name": "com.uit.khaph.uitocm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "280982305319-ndi3v5os9s9ljbkt86uto62ba8skte7v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9vqVb5ExYr_30E43f27VrSygDEOMFADs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
