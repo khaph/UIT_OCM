@@ -19,11 +19,11 @@
     <RelativeLayout
         android:id="@+id/bucket_layout"
         android:visibility="invisible"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="218dp"
-        tools:ignore="MissingConstraints">
+        android:paddingTop="300dp">
 
         <EditText
             android:id="@+id/usr"
