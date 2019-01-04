@@ -11,6 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,7 +37,7 @@ import static com.android.volley.VolleyLog.TAG;
 public class LoginActivity extends Activity {
 
     ImageView ivMainImage;
-    Animation aniMainImage;
+    Animation aniMainImage, bot_to_top;
     EditText edtUserName;
     EditText edtPassWord;
     TextView tvSignUp;
@@ -45,6 +46,7 @@ public class LoginActivity extends Activity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     Intent main;
     Intent signup;
+    RelativeLayout buc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,11 +138,8 @@ public class LoginActivity extends Activity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                edtUserName.setVisibility(View.VISIBLE);
-                edtPassWord.setVisibility(View.VISIBLE);
-                btnSubmit.setVisibility(View.VISIBLE);
-                tvSignUp.setVisibility(View.VISIBLE);
-                textView.setVisibility(View.VISIBLE);
+                buc.setVisibility(View.VISIBLE);
+                buc.startAnimation(bot_to_top);
             }
 
             @Override
@@ -161,5 +160,6 @@ public class LoginActivity extends Activity {
         btnSubmit = (Button)findViewById(R.id.submit);
         main = new Intent(this,MainActivity.class);
         signup = new Intent(this,SignupActivity.class);
+        buc = (RelativeLayout)findViewById(R.id.bucket_layout);
     }
 }
