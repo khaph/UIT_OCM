@@ -135,13 +135,13 @@ public class LoginActivity extends Activity {
         aniMainImage.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-
+                buc.setVisibility(View.VISIBLE);
+                buc.startAnimation(bot_to_top);
             }
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                buc.setVisibility(View.VISIBLE);
-                buc.startAnimation(bot_to_top);
+                
             }
 
             @Override
