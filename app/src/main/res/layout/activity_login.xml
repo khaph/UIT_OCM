@@ -18,7 +18,7 @@
 
     <RelativeLayout
         android:id="@+id/bucket_layout"
-        android:visibility="visible"
+        android:visibility="invisible"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:layout_width="match_parent"
