@@ -4,9 +4,9 @@
 
     <scale
         android:startOffset="2000"
-        android:fromXScale="1"
+        android:fromXScale=".9"
         android:toXScale=".6"
-        android:fromYScale="1"
+        android:fromYScale=".9"
         android:toYScale=".6"
         android:pivotX="50%"
         android:pivotY="50%"
@@ -14,7 +14,7 @@
     <translate
         android:startOffset="2000"
         android:fromYDelta="0"
-        android:toYDelta="-200"
+        android:toYDelta="-170"
         android:duration="1000"
         />
 

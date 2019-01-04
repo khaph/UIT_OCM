@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -31,11 +32,11 @@ import java.util.Calendar;
 
 public class SignupActivity extends AppCompatActivity {
 
-    EditText tvUserName;
-    EditText tvPassWord;
-    EditText tvDayOfBirth;
-    EditText tvClass;
-    EditText tvFullName;
+    TextInputLayout edtUserName;
+    TextInputLayout edtPassWord;
+    TextInputLayout edtDayOfBirth;
+    TextInputLayout edtClass;
+    TextInputLayout edtFullName;
     Button btnSignup;
     ImageView imvPicture;
 
@@ -72,7 +73,7 @@ public class SignupActivity extends AppCompatActivity {
 
     public void signup(){
         // Get the data from an ImageView as bytes
-        final StorageReference childRef = storageRef.child(tvUserName.getText().toString()+".png");
+        final StorageReference childRef = storageRef.child(edtUserName.getEditText().getText().toString()+".png");
         imvPicture.setDrawingCacheEnabled(true);
         imvPicture.buildDrawingCache();
         Bitmap bitmap = ((BitmapDrawable) imvPicture.getDrawable()).getBitmap();
@@ -109,11 +110,11 @@ public class SignupActivity extends AppCompatActivity {
                             Uri downloadUri = task.getResult();
 
                             //Add database
-                            myRef = database.getReference().child("Students").child(tvUserName.getText().toString());
+                            myRef = database.getReference().child("Students").child(edtUserName.getEditText().getText().toString());
                             // set value to the database
-                            student = new Student(tvUserName.getText().toString(),tvPassWord.getText().toString(),tvDayOfBirth.getText().toString(),tvClass.getText().toString(),downloadUri.toString(),tvFullName.getText().toString());
+                            student = new Student(edtUserName.getEditText().getText().toString(),edtPassWord.getEditText().getText().toString(),edtDayOfBirth.getEditText().getText().toString(),edtClass.getEditText().getText().toString(),downloadUri.toString(),edtFullName.getEditText().getText().toString());
                             myRef.setValue(student);
-                            Toast.makeText(getApplicationContext(), "Đăng kí thành công với ID: " + tvUserName.getText().toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Đăng kí thành công với ID: " + edtUserName.getEditText().getText().toString(), Toast.LENGTH_SHORT).show();
                             ///
                         } else {
                             // Handle failures
@@ -127,13 +128,13 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void mapView(){
-        tvUserName = (EditText)findViewById(R.id.tvUserName);
-        tvClass = (EditText)findViewById(R.id.tvClass);
-        tvDayOfBirth = (EditText)findViewById(R.id.tvDayOfBirth);
-        tvFullName = (EditText)findViewById(R.id.tvName);
-        tvPassWord = (EditText)findViewById(R.id.tvPassWord);
-        btnSignup = (Button)findViewById(R.id.btnSignup);
-        imvPicture = (ImageView)findViewById(R.id.imageView2);
+        edtUserName = findViewById(R.id.edtUserName);
+        edtClass = findViewById(R.id.edtClassName);
+        edtDayOfBirth = findViewById(R.id.edtBirthDay);
+        edtFullName = findViewById(R.id.edtFullName);
+        edtPassWord = findViewById(R.id.edtPassWord);
+        btnSignup = findViewById(R.id.btnSignup);
+        imvPicture = findViewById(R.id.imageView2);
         database = FirebaseDatabase.getInstance();
     }
 }
