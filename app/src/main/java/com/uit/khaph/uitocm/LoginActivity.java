@@ -55,6 +55,8 @@ public class LoginActivity extends Activity {
         MapView();
         ivMainImage.startAnimation(aniMainImage);
         ShowLoginForm();
+
+
         //connect database
         DatabaseReference dbr = database.getReference();
 
@@ -153,6 +155,7 @@ public class LoginActivity extends Activity {
     public void MapView(){
         ivMainImage = (ImageView)findViewById(R.id.main_img);
         aniMainImage = AnimationUtils.loadAnimation(this,R.anim.img_main_anim);
+        bot_to_top = AnimationUtils.loadAnimation(this,R.anim.bot_to_top);
         edtUserName = (EditText)findViewById(R.id.usr);
         edtPassWord = (EditText)findViewById(R.id.psw);
         tvSignUp = (TextView)findViewById(R.id.tvSignUp);
