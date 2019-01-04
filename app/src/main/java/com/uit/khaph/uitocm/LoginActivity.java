@@ -156,7 +156,6 @@ public class LoginActivity extends Activity {
         edtUserName = (EditText)findViewById(R.id.usr);
         edtPassWord = (EditText)findViewById(R.id.psw);
         tvSignUp = (TextView)findViewById(R.id.tvSignUp);
-        textView = (TextView)findViewById(R.id.textView);
         btnSubmit = (Button)findViewById(R.id.submit);
         main = new Intent(this,MainActivity.class);
         signup = new Intent(this,SignupActivity.class);
