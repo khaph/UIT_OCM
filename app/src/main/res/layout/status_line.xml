@@ -6,9 +6,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:id="@+id/imvMeetingPicture"
-        android:layout_width="84dp"
-        android:layout_height="71dp"
+        android:id="@+id/imvCreatorPicture"
+        android:layout_width="43dp"
+        android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/logo_uit"
@@ -18,35 +18,41 @@
         app:layout_constraintWidth_percent=".20" />
 
     <TextView
-        android:id="@+id/tvMeetingName"
+        android:id="@+id/tvCreatedDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Ngày tạo"
+        android:textAllCaps="true"
+        android:textColor="#001aff"
+        android:textFontWeight="bold"
+        app:layout_constraintStart_toEndOf="@+id/imvCreatorPicture"
+        app:layout_constraintTop_toBottomOf="@+id/tvCreator" />
+
+    <TextView
+        android:id="@+id/tvCreator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Tên cuộc họp"
+        android:text="Tên người tạo"
         android:textAllCaps="true"
         android:textColor="#001aff"
         android:textFontWeight="bold"
-        app:layout_constraintStart_toEndOf="@+id/imvMeetingPicture"
+        app:layout_constraintStart_toEndOf="@+id/imvCreatorPicture"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvCreatorName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Tình trạng"
-        android:textColor="#fc0000"
-        app:layout_constraintStart_toEndOf="@+id/imvMeetingPicture"
-        app:layout_constraintTop_toBottomOf="@+id/tvMeetingName" />
 
     <TextView
-        android:id="@+id/tvInformation"
-        android:layout_width="wrap_content"
+        android:id="@+id/tvStatus"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="50dp"
-        android:text="Thông tin cuộc họp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="10dp"
+        android:text="Trạng thái"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tvCreatedDate" />
 </android.support.constraint.ConstraintLayout>

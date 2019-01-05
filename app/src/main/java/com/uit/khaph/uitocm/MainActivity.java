@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     String className;
     String pictureUrl;
     String test;
+    TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mapView();
 
+        tabLayout.getTabAt(3).setIcon(R.drawable.user_icon);
+        tabLayout.getTabAt(1).setIcon(R.drawable.meeting_icon);
+        tabLayout.getTabAt(2).setIcon(R.drawable.notification_icon);
+        tabLayout.getTabAt(0).setIcon(R.drawable.meeting_now_icon);
     }
 
     public void mapView(){
@@ -44,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         pictureUrl = getIntent().getExtras().getString("pictureUrl","uni");
         vpViewPager = (ViewPager)findViewById(R.id.container);
         vpViewPager.setAdapter(new FragmentAdapter(getSupportFragmentManager(),userName,className,pictureUrl));
-        TabLayout tabLayout = (TabLayout)findViewById(R.id.tabs);
+        tabLayout = (TabLayout)findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(vpViewPager);
     }
 }

@@ -31,7 +31,7 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme" />
         <activity android:name=".SignupActivity" />
-        <activity android:name=".CreateClassActivity" />
+        <activity android:name=".CreateClassActivity" android:label="       TẠO CUỘC HỌP     " android:theme="@style/Theme.AppCompat.Light.Dialog" android:excludeFromRecents="true"/>
         <activity android:name=".MeetingActivity"></activity>
     </application>
 

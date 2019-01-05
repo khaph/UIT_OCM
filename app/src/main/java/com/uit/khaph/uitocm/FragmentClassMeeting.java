@@ -4,18 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,17 +20,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 public class FragmentClassMeeting extends Fragment {
     private View vView;
-    FloatingActionButton btnAddNew;
+    Button btnAddNew;
     Intent createClassAcitivity;
     String userName;
     FirebaseDatabase database;
@@ -74,6 +67,20 @@ public class FragmentClassMeeting extends Fragment {
                 return false;
             }
         });
+
+        lvMeeting.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                meeting = listMeeting.get(position);
+                Intent intent = new Intent(getContext(),MeetingActivity.class);
+                intent.putExtra("userName",userName);
+                intent.putExtra("className",className);
+                intent.putExtra("meetingName",meeting.getMeetingName());
+                intent.putExtra("pictureUrl",pictureUrl);
+                intent.putExtra("isEnd",meeting.getIsEnd());
+                startActivity(intent);
+            }
+        });
         registerForContextMenu(lvMeeting);
 
 
@@ -92,13 +99,14 @@ public class FragmentClassMeeting extends Fragment {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.meetingMenuJoin:{
-                Intent intent = new Intent(getContext(),MeetingActivity.class);
-                intent.putExtra("userName",userName);
-                intent.putExtra("className",className);
-                intent.putExtra("meetingName",meeting.getMeetingName());
-                intent.putExtra("pictureUrl",pictureUrl);
-                startActivity(intent);
+            case R.id.meetingMenuStart:{
+                DatabaseReference newRef = database.getReference().child("Meetings").child(meeting.getClassName()).child(meeting.getMeetingName()).child("isEnd");
+                newRef.setValue("0");
+                break;
+            }
+            case R.id.meetingMenuStop:{
+                DatabaseReference newRef = database.getReference().child("Meetings").child(meeting.getClassName()).child(meeting.getMeetingName()).child("isEnd");
+                newRef.setValue("1");
                 break;
             }
             case R.id.meetingMenuDelete:{
@@ -138,7 +146,7 @@ public class FragmentClassMeeting extends Fragment {
                 }
                 else{
                     if (listMeeting.size()==0)
-                        listMeeting.add(new Meeting("","","Không có cuộc họp nào","",className));
+                        listMeeting.add(new Meeting("","","Không có cuộc họp nào","",className,"3"));
                     meetingAdapter = new MeetingAdapter(getContext(),R.layout.meeting_line,listMeeting);
                     lvMeeting.setAdapter(meetingAdapter);
                 }

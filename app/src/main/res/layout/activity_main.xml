@@ -12,8 +12,9 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintHeight_percent=".10"
-        app:layout_constraintTop_toBottomOf="@+id/container"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent=".07"
+        app:layout_constraintStart_toStartOf="parent"
         app:tabIndicatorColor="#00000000"
         app:tabMode="fixed"
         app:tabSelectedTextColor="#000">
@@ -24,6 +25,8 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintHeight_percent=".90"/>
+        app:layout_constraintHeight_percent=".93"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

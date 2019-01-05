@@ -29,6 +29,7 @@ public class CreateClassActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_class);
+        this.setFinishOnTouchOutside(true);
         mapView();
 
         btnCreate.setOnClickListener(new View.OnClickListener() {
@@ -36,10 +37,11 @@ public class CreateClassActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 createMeeting();
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                intent.putExtra("userName",userName);
-                intent.putExtra("className",className);
-                startActivity(intent);
+//                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+//                intent.putExtra("userName",userName);
+//                intent.putExtra("className",className);
+//                startActivity(intent);
+                finish();
             }
         });
     }
@@ -47,7 +49,7 @@ public class CreateClassActivity extends AppCompatActivity {
     public void createMeeting(){
         myRef = database.getReference().child("Meetings").child(className).child(edtMeetingName.getText().toString());
         // set value to the database
-        meeting = new Meeting(userName, edtMeetingName.getText().toString(), edtInformation.getText().toString(), edtDate.getText().toString(), className);
+        meeting = new Meeting(userName, edtMeetingName.getText().toString(), edtInformation.getText().toString(), edtDate.getText().toString(), className,"2");
         myRef.setValue(meeting);
         Toast.makeText(getApplicationContext(), "Tạo cuộc họp thành công : " + edtMeetingName.getText().toString(), Toast.LENGTH_SHORT).show();
     }

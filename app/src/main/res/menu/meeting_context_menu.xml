@@ -2,8 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:title="Vào buổi họp"
-        android:id="@+id/meetingMenuJoin"/>
+        android:title="Bắt đầu"
+        android:id="@+id/meetingMenuStart"/>
+    <item
+        android:title="Kết thúc"
+        android:id="@+id/meetingMenuStop"/>
     <item
         android:title="Xóa buổi họp"
         android:id="@+id/meetingMenuDelete"/>

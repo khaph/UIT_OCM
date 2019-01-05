@@ -8,11 +8,15 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 public class FragmentAdapter extends FragmentStatePagerAdapter {
 
-    private String listTab[]={"Meeting","User"};
+    private String listTab[]={"","","",""};
 
     private FragmentUserDetail fragmentUserDetail;
 
     private FragmentClassMeeting fragmentClassMeeting;
+
+    private FragmentNotification fragmentNotification;
+
+    private FragmentStatus fragmentStatus;
 
     public FragmentAdapter(FragmentManager fm, @Nullable String userName,@Nullable String className,@Nullable String pictureUrl){
         super(fm);
@@ -32,15 +36,40 @@ public class FragmentAdapter extends FragmentStatePagerAdapter {
         classMeetingBundle.putString("userName",userName);
         classMeetingBundle.putString("pictureUrl",pictureUrl);
         fragmentClassMeeting.setArguments(classMeetingBundle);
+
+        //Notification
+
+        fragmentNotification = new FragmentNotification();
+        Bundle notificationBundle = new Bundle();
+        notificationBundle.putString("className",className);
+        notificationBundle.putString("userName",userName);
+        notificationBundle.putString("pictureUrl",pictureUrl);
+        fragmentClassMeeting.setArguments(notificationBundle);
+
+        //Meeting now
+        fragmentStatus = new FragmentStatus();
+        Bundle meetingNowBundle = new Bundle();
+        meetingNowBundle.putString("className",className);
+        meetingNowBundle.putString("userName",userName);
+        meetingNowBundle.putString("pictureUrl",pictureUrl);
+        meetingNowBundle.putString("meetingName","1");
+        fragmentStatus.setArguments(meetingNowBundle);
+
+
     }
 
     @Override
     public Fragment getItem(int i) {
-        if (i == 1){
-            return fragmentUserDetail;
-        }else if(i==0){
+        if (i == 0){
             return fragmentClassMeeting;
+        }else if(i==1){
+            return fragmentStatus;
+        }else if(i==2){
+            return fragmentNotification;
+        }else if(i==3){
+            return fragmentUserDetail;
         }
+
         return null;
     }
 

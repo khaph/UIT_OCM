@@ -2,10 +2,12 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginLeft="50dp"
-    android:layout_marginRight="50dp"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_marginRight="30dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginBottom="30dp"
+    android:layout_marginTop="30dp"
     tools:context=".CreateClassActivity">
 
 
@@ -13,7 +15,7 @@
         android:id="@+id/MeetingName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="30dp"
         android:backgroundTint="#2a4d69"
         android:textColorHint="@color/login_hint"
         app:layout_constraintStart_toStartOf="parent"

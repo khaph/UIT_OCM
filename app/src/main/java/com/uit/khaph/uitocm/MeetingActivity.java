@@ -1,5 +1,6 @@
 package com.uit.khaph.uitocm;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,7 +17,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class MeetingActivity extends AppCompatActivity {
 
@@ -30,6 +30,7 @@ public class MeetingActivity extends AppCompatActivity {
     String className;
     String meetingName;
     String pictureUrl;
+    String isEnd;
 
     ArrayList<Message> listMessage;
     MessageAdapter messageAdapter;
@@ -50,12 +51,27 @@ public class MeetingActivity extends AppCompatActivity {
                 addNewMessage();
             }
         });
+
+        if (isEnd.equals("1") || isEnd.equals("2")){
+            btnSendMessage.setEnabled(false);
+            edtNewMessage.setEnabled(false);
+        }
     }
+//
+//    @Override
+//    public void onBackPressed() {
+//        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+//        intent.putExtra("userName",userName);
+//        intent.putExtra("className",className);
+//        intent.putExtra("pictureUrl",pictureUrl);
+//        startActivity(intent);
+//    }
 
     public void addNewMessage(){
         DatabaseReference newRef = database.getReference().child("Meetings").child(className).child(meetingName).child("Messages");
         Message message = new Message(edtNewMessage.getText().toString(),userName,pictureUrl);
         newRef.push().setValue(message);
+        edtNewMessage.setText("");
     }
 
     public void getData(){
@@ -88,13 +104,13 @@ public class MeetingActivity extends AppCompatActivity {
                         listMessage.add(data.getValue(Message.class));
                     }
 
-                    messageAdapter = new MessageAdapter(getApplicationContext(),R.layout.message_line,listMessage);
+                    messageAdapter = new MessageAdapter(getApplicationContext(),listMessage,userName);
                     lvMessage.setAdapter(messageAdapter);
                 }
                 else{
                     if (listMessage.size()==0)
                         listMessage.add(new Message("Không có tin nhắn nào","",""));
-                    messageAdapter = new MessageAdapter(getApplicationContext(),R.layout.message_line,listMessage);
+                    messageAdapter = new MessageAdapter(getApplicationContext(),listMessage,userName);
                     lvMessage.setAdapter(messageAdapter);
                 }
             }
@@ -116,6 +132,7 @@ public class MeetingActivity extends AppCompatActivity {
         className = getIntent().getExtras().getString("className","uni");
         meetingName = getIntent().getExtras().getString("meetingName","uni");
         pictureUrl = getIntent().getExtras().getString("pictureUrl","uni");
+        isEnd = getIntent().getExtras().getString("isEnd","0");
         listMessage = new ArrayList<Message>();
     }
 }

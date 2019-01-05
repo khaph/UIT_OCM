@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -19,11 +21,13 @@ public class MessageAdapter extends BaseAdapter {
     TextView tvAuthorName;
     TextView tvMessage;
     ImageView imvAuthorPicture;
+    String userName;
+    FirebaseDatabase database;
 
-    public MessageAdapter(Context context, int layout, ArrayList<Message> listMessage){
+    public MessageAdapter(Context context,  ArrayList<Message> listMessage, String userName){
         this.context = context;
-        this.layout = layout;
         this.listMessage = listMessage;
+        this.userName = userName;
     }
 
     @Override
@@ -44,19 +48,38 @@ public class MessageAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
+
+        Message message = listMessage.get(position);
+//        if (message.getAuthorName() == this.userName) this.layout = R.layout.message_line_right;
+//        else if (message.getAuthorName() != this.userName) this.layout = R.layout.message_line_left;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(layout,null);
 
         //mapping
-        tvAuthorName = (TextView)convertView.findViewById(R.id.tvAuthorName);
-        tvMessage = (TextView)convertView.findViewById(R.id.tvMessage);
-        imvAuthorPicture = (ImageView) convertView.findViewById(R.id.imvUserPicture);
+        if (this.layout == R.layout.message_line_left){
+            tvAuthorName = (TextView)convertView.findViewById(R.id.tvAuthorName_left);
+            tvMessage = (TextView)convertView.findViewById(R.id.tvMessage_left);
+            imvAuthorPicture = (ImageView) convertView.findViewById(R.id.imvUserPicture);
+        }if(this.layout == R.layout.message_line_right){
+            tvAuthorName = (TextView)convertView.findViewById(R.id.tvAuthorName_right);
+            tvMessage = (TextView)convertView.findViewById(R.id.tvMessage_right);
+        }
         //set value
-        Message message = listMessage.get(position);
         tvAuthorName.setText(message.getAuthorName());
         tvMessage.setText(message.getMessage());
         //Picasso.get().load(message.getPicture()).into(imvAuthorPicture);
 
         return convertView;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (listMessage.get(position).getAuthorName().equals(userName)){
+             layout = R.layout.message_line_right;
+        }else
+        {
+            layout = R.layout.message_line_left;
+        }
+        return 0;
     }
 }
