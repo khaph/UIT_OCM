@@ -6,14 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="#dae2ff"
     tools:context=".MainActivity">
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@color/main_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_percent=".07"
+
         app:layout_constraintStart_toStartOf="parent"
         app:tabIndicatorColor="#00000000"
         app:tabMode="fixed"
