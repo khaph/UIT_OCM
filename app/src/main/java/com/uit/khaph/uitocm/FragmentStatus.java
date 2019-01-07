@@ -1,12 +1,16 @@
 package com.uit.khaph.uitocm;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -53,15 +57,30 @@ public class FragmentStatus extends Fragment {
             }
         });
 
+        lvListStatus.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Status status = listStatus.get(position);
+                Intent intent = new Intent(getContext(),StatusActivity.class);
+                intent.putExtra("userName",userName);
+                intent.putExtra("className",className);
+                intent.putExtra("status",status.getStatus());
+                intent.putExtra("pictureUrl",pictureUrl);
+                startActivity(intent);
+            }
+        });
 
         return vView;
     }
 
     public void addNewStatus(){
-        DatabaseReference newRef = database.getReference().child("Status");
+        DatabaseReference newRef = database.getReference().child("Status").child(edtNewStatus.getText().toString());
         Status status = new Status(userName, edtNewStatus.getText().toString(),"01/01/2019",className);
-        newRef.push().setValue(status);
+        newRef.setValue(status);
+        edtNewStatus.setText("");
     }
+
 
     public void getData(){
         DatabaseReference newRef = database.getReference().child("Status");

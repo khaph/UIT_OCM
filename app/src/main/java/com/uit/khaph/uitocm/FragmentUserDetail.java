@@ -1,5 +1,6 @@
 package com.uit.khaph.uitocm;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
@@ -31,6 +32,7 @@ public class FragmentUserDetail extends Fragment {
     TextView tvName;
     TextView tvClass;
     ImageView imvUserPicture;
+    Button btnLogout;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -44,11 +46,19 @@ public class FragmentUserDetail extends Fragment {
         tvUserName.setText(user);
         getData(user);
 
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return vView;
     }
 
     public void mapView(){
+        btnLogout = vView.findViewById(R.id.btnLogout);
         imvUserPicture = vView.findViewById(R.id.imvUserPicture);
         tvDayOfBirth = vView.findViewById(R.id.tvDayOfBirth);
         tvName = vView.findViewById(R.id.tvName);

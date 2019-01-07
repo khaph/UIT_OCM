@@ -5,48 +5,56 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:id="@+id/imvMeetingPicture"
-        android:layout_width="84dp"
-        android:layout_height="71dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/logo_uit"
-        app:layout_constraintHeight_percent=".20"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent=".20" />
-
-    <TextView
-        android:id="@+id/tvMeetingName"
-        android:layout_width="wrap_content"
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Tên cuộc họp"
-        android:textAllCaps="true"
-        android:textColor="#001aff"
-        android:textFontWeight="bold"
-        app:layout_constraintStart_toEndOf="@+id/imvMeetingPicture"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:columnCount="2"
+        android:rowCount="3">
 
-    <TextView
-        android:id="@+id/tvCreatorName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Tình trạng"
-        android:textColor="#fc0000"
-        app:layout_constraintStart_toEndOf="@+id/imvMeetingPicture"
-        app:layout_constraintTop_toBottomOf="@+id/tvMeetingName" />
+        <ImageView
+            android:id="@+id/imvMeetingPicture"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/logo_uit"
+            app:layout_constraintHeight_percent=".80"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent=".20" />
 
-    <TextView
-        android:id="@+id/tvInformation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="50dp"
-        android:text="Thông tin cuộc họp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tvMeetingName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:text="Tên cuộc họp"
+            android:textAllCaps="true"
+            android:textColor="@color/main_color"
+            android:textFontWeight="bold"
+            app:layout_constraintStart_toEndOf="@+id/imvMeetingPicture"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCreatorName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Tình trạng"
+            android:textColor="#fc0000"
+            app:layout_constraintStart_toEndOf="@+id/imvMeetingPicture"
+            app:layout_constraintTop_toBottomOf="@+id/tvMeetingName" />
+
+        <TextView
+            android:id="@+id/tvInformation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Thông tin"
+            app:layout_constraintStart_toEndOf="@+id/imvMeetingPicture"
+            app:layout_constraintTop_toBottomOf="@+id/tvCreatorName" />
+
+    </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

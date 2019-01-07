@@ -12,13 +12,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
-        android:text="Tên người gửi"
+        android:text="TÃªn ngÆ°á»i gá»­i"
         android:textSize="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:background="@drawable/button_login"
+        android:background="@drawable/line_right"
         android:id="@+id/tvMessage_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,6 +30,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:textAlignment="textEnd"
+        android:textColor="@android:color/white"
         android:text="Nội dung tin nhắn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAuthorName_right" />

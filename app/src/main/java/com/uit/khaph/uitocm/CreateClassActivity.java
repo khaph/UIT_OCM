@@ -52,6 +52,9 @@ public class CreateClassActivity extends AppCompatActivity {
         meeting = new Meeting(userName, edtMeetingName.getText().toString(), edtInformation.getText().toString(), edtDate.getText().toString(), className,"2");
         myRef.setValue(meeting);
         Toast.makeText(getApplicationContext(), "Tạo cuộc họp thành công : " + edtMeetingName.getText().toString(), Toast.LENGTH_SHORT).show();
+        DatabaseReference newRef = database.getReference().child("Notifications");
+        Notification notification = new Notification(userName, "đã tạo một cuộc họp","01/01/2019",className);
+        newRef.push().setValue(notification);
     }
 
     public void mapView(){

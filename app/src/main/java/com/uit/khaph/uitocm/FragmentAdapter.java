@@ -44,7 +44,7 @@ public class FragmentAdapter extends FragmentStatePagerAdapter {
         notificationBundle.putString("className",className);
         notificationBundle.putString("userName",userName);
         notificationBundle.putString("pictureUrl",pictureUrl);
-        fragmentClassMeeting.setArguments(notificationBundle);
+        fragmentNotification.setArguments(notificationBundle);
 
         //Meeting now
         fragmentStatus = new FragmentStatus();

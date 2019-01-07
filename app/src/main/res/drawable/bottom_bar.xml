@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <gradient
-        android:startColor="#2a4d69"
-        android:centerColor="#4b86b4"
-        android:endColor="	#adcbe3"
+        android:endColor="@color/main_color"
+        android:startColor="@color/login_text"
         android:angle="270">
     </gradient>
-
-    <corners android:radius="30dp"/>
 
 
 </shape>

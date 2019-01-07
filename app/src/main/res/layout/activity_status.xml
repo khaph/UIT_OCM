@@ -4,23 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MeetingActivity">
+    tools:context=".StatusActivity">
 
     <TextView
-        android:background="@drawable/bar"
-        android:id="@+id/tvNotification"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background_for_fb"
+        android:id="@+id/tvUserStatus"
         android:layout_width="match_parent"
         android:layout_height="171dp"
         android:gravity="center"
         android:text="Thông báo"
         android:textSize="24dp"
-        android:textColor="#fff"
+        android:textColor="#000"
         android:textFontWeight="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/lvMessage"
+        android:id="@+id/lvComment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="2dp"
@@ -29,14 +32,14 @@
         android:dividerHeight="2dp"
         android:stackFromBottom="true"
         android:transcriptMode="alwaysScroll"
-        app:layout_constraintBottom_toTopOf="@+id/edtNewMessage"
+        app:layout_constraintBottom_toTopOf="@+id/edtNewComment"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNotification" />
+        app:layout_constraintTop_toBottomOf="@+id/tvUserStatus" />
 
     <EditText
         android:paddingLeft="10dp"
         android:paddingRight="50dp"
-        android:id="@+id/edtNewMessage"
+        android:id="@+id/edtNewComment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -54,15 +57,15 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnSendMessage"
+        android:id="@+id/btnSendComment"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
         android:background="@drawable/send_button"
-        app:layout_constraintBottom_toBottomOf="@+id/edtNewMessage"
-        app:layout_constraintEnd_toEndOf="@+id/edtNewMessage"
-        app:layout_constraintTop_toTopOf="@+id/edtNewMessage"
+        app:layout_constraintBottom_toBottomOf="@+id/edtNewComment"
+        app:layout_constraintEnd_toEndOf="@+id/edtNewComment"
+        app:layout_constraintTop_toTopOf="@+id/edtNewComment"
         app:layout_constraintWidth_percent=".15" />
 </android.support.constraint.ConstraintLayout>

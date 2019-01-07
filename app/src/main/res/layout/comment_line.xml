@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <ImageView
-        android:id="@+id/imvCreatorPicture"
+        android:id="@+id/imv_comment_CreatorPicture"
         android:layout_width="43dp"
         android:layout_height="32dp"
         android:layout_marginStart="8dp"
@@ -18,7 +16,7 @@
         app:layout_constraintWidth_percent=".20" />
 
     <TextView
-        android:id="@+id/tvCreatedDate"
+        android:id="@+id/tv_comment_CreatedDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -26,11 +24,11 @@
         android:textSize="10dp"
         android:textAllCaps="true"
         android:textFontWeight="bold"
-        app:layout_constraintStart_toEndOf="@+id/imvCreatorPicture"
-        app:layout_constraintTop_toBottomOf="@+id/tvCreator" />
+        app:layout_constraintStart_toEndOf="@+id/imv_comment_CreatorPicture"
+        app:layout_constraintTop_toBottomOf="@+id/tv_comment_Creator" />
 
     <TextView
-        android:id="@+id/tvCreator"
+        android:id="@+id/tv_comment_Creator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -39,12 +37,12 @@
         android:textAllCaps="true"
         android:textColor="#001aff"
         android:textFontWeight="bold"
-        app:layout_constraintStart_toEndOf="@+id/imvCreatorPicture"
+        app:layout_constraintStart_toEndOf="@+id/imv_comment_CreatorPicture"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
-        android:id="@+id/tvStatus"
+        android:id="@+id/tv_comment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -56,10 +54,11 @@
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        android:text="Trạng thái"
+        android:text="Comment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCreatedDate" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_comment_CreatedDate" />
+
 </android.support.constraint.ConstraintLayout>

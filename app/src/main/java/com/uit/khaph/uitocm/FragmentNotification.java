@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,17 +22,21 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 public class FragmentNotification extends Fragment {
     private View vView;
 
-    String user;
+    ListView lvNotification;
+
+    String userName;
+    String className;
+    String notification;
     String pictureUrl;
 
-    TextView tvUserName;
-    TextView tvDayOfBirth;
-    TextView tvName;
-    TextView tvClass;
-    ImageView imvUserPicture;
+    NotificationAdapter notificationAdapter;
+
+    ArrayList<Notification> listNotification;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -41,42 +47,34 @@ public class FragmentNotification extends Fragment {
 
         mapView();
 
-        tvUserName.setText(user);
-        getData(user);
+        getData();
 
 
         return vView;
     }
 
     public void mapView(){
-        imvUserPicture = vView.findViewById(R.id.imvUserPicture);
-        tvDayOfBirth = vView.findViewById(R.id.tvDayOfBirth);
-        tvName = vView.findViewById(R.id.tvName);
-        tvClass = vView.findViewById(R.id.tvClass);
-        tvUserName = vView.findViewById(R.id.tvUserName);
-        Bundle bun = getArguments();
-        if (bun != null){
-            user = bun.getString("userName","unidentify");
-            pictureUrl = bun.getString("pictureUrl","uni");
-        }
-        else{
-            user = "unidentify";
-        }
+        database = FirebaseDatabase.getInstance();
+        lvNotification = (ListView)vView.findViewById(R.id.lvNotification);
+        Bundle meetingNowBundle = getArguments();
+        userName = meetingNowBundle.getString("userName","uni");
+        className = meetingNowBundle.getString("className","uni");
+        pictureUrl = meetingNowBundle.getString("pictureUrl","uni");
+        listNotification = new ArrayList<Notification>();
     }
 
-    private void getData(final String usr){
-        DatabaseReference myRef = database.getReference().child("Students").child(usr);
+    public void getData(){
+        DatabaseReference newRef = database.getReference().child("Notifications");
         // Read from the database
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        newRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.hasChild("userName")){
-                    dataSnapshot.getChildren();
-                    tvName.setText(dataSnapshot.child("fullName").getValue().toString());
-                    tvDayOfBirth.setText(dataSnapshot.child("dayOfBirth").getValue().toString());
-                    tvClass.setText(dataSnapshot.child("className").getValue().toString());
-                    Picasso.get().load(pictureUrl).into(imvUserPicture);
+                listNotification.clear();
+                for (DataSnapshot data : dataSnapshot.getChildren()){
+                    listNotification.add(data.getValue(Notification.class));
                 }
+                notificationAdapter = new NotificationAdapter(getContext(),R.layout.notification_line,listNotification);
+                lvNotification.setAdapter(notificationAdapter);
             }
 
             @Override

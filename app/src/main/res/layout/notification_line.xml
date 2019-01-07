@@ -6,60 +6,52 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:id="@+id/imvCreatorPicture"
-        android:layout_width="43dp"
-        android:layout_height="32dp"
+        android:id="@+id/img_notification_creator"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/logo_uit"
-        app:layout_constraintHeight_percent=".20"
+        app:layout_constraintHeight_percent=".80"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent=".20" />
 
     <TextView
-        android:id="@+id/tvCreatedDate"
+        android:id="@+id/tv_notification_CreatedDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="Ngày tạo"
         android:textSize="10dp"
-        android:textAllCaps="true"
         android:textFontWeight="bold"
-        app:layout_constraintStart_toEndOf="@+id/imvCreatorPicture"
-        app:layout_constraintTop_toBottomOf="@+id/tvCreator" />
-
-    <TextView
-        android:id="@+id/tvCreator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Tên người tạo"
-        android:textAllCaps="true"
-        android:textColor="#001aff"
-        android:textFontWeight="bold"
-        app:layout_constraintStart_toEndOf="@+id/imvCreatorPicture"
+        app:layout_constraintStart_toEndOf="@+id/img_notification_creator"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tv_notification_Creator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Tên người tạo"
+        android:textColor="#001aff"
+        android:textFontWeight="bold"
+        app:layout_constraintStart_toEndOf="@+id/img_notification_creator"
+        app:layout_constraintTop_toBottomOf="@+id/tv_notification_CreatedDate" />
+
 
     <TextView
-        android:id="@+id/tvStatus"
+        android:id="@+id/tv_notification"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="4dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/background_for_fb"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:text="Trạng thái"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Thông tin"
+        android:textColor="#000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCreatedDate" />
+        app:layout_constraintStart_toEndOf="@+id/tv_notification_Creator"
+        app:layout_constraintTop_toBottomOf="@+id/tv_notification_CreatedDate" />
 </android.support.constraint.ConstraintLayout>
